@@ -6,10 +6,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen">
         <header className="border-b">
           <nav className="mx-auto max-w-5xl flex items-center justify-between p-4">
-            <a href="<Link />" className="font-bold">WorldWonders</a>
+            <link href="/" className="font-bold">WorldWonders</link>
             <div className="space-x-4 text-sm">
-              <a href="/visa" className="underline">Visa</a>
-              <a href="/contact" className="underline">Contact</a>
+              <link href="/visa" className="underline">Visa</link>
+              <link href="/contact" className="underline">Contact</link>
             </div>
           </nav>
         </header>
