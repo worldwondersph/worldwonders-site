@@ -14,8 +14,8 @@ type Row = {
 export default function VisaClient() {
   const [rows, setRows] = useState<Row[]>([]);
   const [loading, setLoading] = useState(true);
-  const [destination, setDestination] = useState<string>('');
-  const [travelerType, setTravelerType] = useState<string>('');
+  const [destination, setDestination] = useState('');
+  const [travelerType, setTravelerType] = useState('');
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -29,8 +29,9 @@ export default function VisaClient() {
 
         if (error) throw error;
         setRows((data || []) as Row[]);
-      } catch (e: any) {
-        setError(e?.message || 'Failed to load data.');
+      } catch (e: unknown) {
+        const message = e instanceof Error ? e.message : 'Failed to load data.';
+        setError(message);
       } finally {
         setLoading(false);
       }
@@ -54,9 +55,6 @@ export default function VisaClient() {
   return (
     <div className="mx-auto max-w-3xl p-6">
       <h1 className="text-3xl font-bold mb-4">Visa Requirements</h1>
-      <p className="mb-6 text-sm opacity-80">
-        Select a destination and traveler type to view the checklist.
-      </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <div>
